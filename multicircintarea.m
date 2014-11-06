@@ -61,7 +61,8 @@ len = size(intpts, 1);
 A2 = 0;
 for i = 1:len
   i1 = intpts(i, 3); j1 = intpts(i, 4);
-  i2 = intpts(mod(i, len)+1, 3); j2 = intpts(mod(i, len)+1, 4);
+  i2 = intpts(mod(i, len) + 1, 3); j2 = intpts(mod(i, len) + 1, 4);
+
   if (i1 == i2)
     cc = i1;
   else
@@ -69,11 +70,8 @@ for i = 1:len
   end
   
   pt1 = [intpts(i, 1), intpts(i, 2)];
-  if (i + 1 == len + 1)
-    pt2 = [intpts(1, 1), intpts(1, 2)];
-  else
-    pt2 = [intpts(i+1, 1), intpts(i+1, 2)];
-  end
+  pt2 = [intpts(mod(i, len) + 1, 1), intpts(mod(i, len) + 1, 2)];
+  
   cl = norm(pt1 - pt2, 2);
   r = R(cc);
   centang = 2*asin(cl / (2*r));
