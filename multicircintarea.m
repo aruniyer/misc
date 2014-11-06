@@ -67,9 +67,13 @@ for i = 1:len
   else
     cc = j1;
   end
-
+  
   pt1 = [intpts(i, 1), intpts(i, 2)];
-  pt2 = [intpts(mod(i, len)+1, 1), intpts(mod(i, len)+1, 2)];
+  if (i + 1 == len + 1)
+    pt2 = [intpts(1, 1), intpts(1, 2)];
+  else
+    pt2 = [intpts(i+1, 1), intpts(i+1, 2)];
+  end
   cl = norm(pt1 - pt2, 2);
   r = R(cc);
   centang = 2*asin(cl / (2*r));
