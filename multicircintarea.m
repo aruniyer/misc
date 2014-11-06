@@ -63,10 +63,12 @@ for i = 1:len
   i1 = intpts(i, 3); j1 = intpts(i, 4);
   i2 = intpts(mod(i, len) + 1, 3); j2 = intpts(mod(i, len) + 1, 4);
 
-  if (i1 == i2)
+  if (i1 == i2 || i1 == j2)
     cc = i1;
-  else
+  elseif (j1 == i2 || j1 == j2)
     cc = j1;
+  else
+    cc = -1;
   end
   
   pt1 = [intpts(i, 1), intpts(i, 2)];
